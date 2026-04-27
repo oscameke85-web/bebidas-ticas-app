@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="hero-dashboard">
+    <h1>Sistema de Pedidos</h1>
+    <p>Control de clientes, productos, pedidos y resumen diario de Bebidas Ticas.</p>
+
+    <div class="hero-buttons">
+        <a asp-controller="Pedidos" asp-action="Create" class="btn btn-success btn-lg">Nuevo Pedido</a>
+        <a asp-controller="Pedidos" asp-action="Resumen" class="btn btn-outline-success btn-lg">Ver Resumen</a>
+    </div>
+</div>

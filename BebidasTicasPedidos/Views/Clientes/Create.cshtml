@@ -1,0 +1,51 @@
+﻿@model BebidasTicasPedidos.Models.Cliente
+
+@{
+    ViewData["Title"] = "Agregar Cliente";
+}
+
+<h1>Agregar Cliente</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Telefono" class="form-label"></label>
+        <input asp-for="Telefono" class="form-control" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Correo" class="form-label"></label>
+        <input asp-for="Correo" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Zona" class="form-label"></label>
+        <input asp-for="Zona" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TipoCliente" class="form-label">Tipo de cliente</label>
+        <select asp-for="TipoCliente" class="form-control">
+            <option value="Hogar">Hogar</option>
+            <option value="Soda">Soda</option>
+            <option value="Restaurante">Restaurante</option>
+            <option value="Minisúper">Minisúper</option>
+            <option value="Institución">Institución</option>
+            <option value="Evento">Evento</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Observaciones" class="form-label"></label>
+        <textarea asp-for="Observaciones" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

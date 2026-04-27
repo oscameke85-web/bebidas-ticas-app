@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BebidasTicasPedidos.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Pedidos</h1>
+
+    <div>
+        <a asp-action="Resumen" class="btn btn-primary">Ver Resumen</a>
+        <a asp-action="Create" class="btn btn-success">Nuevo Pedido</a>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Total</th>
+            <th>Pago</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var pedido in Model)
+        {
+            <tr>
+                <td>@pedido.Cliente?.Nombre</td>
+                <td>@pedido.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@pedido.Estado</td>
+                <td>₡@pedido.Total</td>
+                <td>@pedido.MetodoPago</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@pedido.Id" class="btn btn-info btn-sm">Ver</a>
+                    <a asp-action="Delete" asp-route-id="@pedido.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

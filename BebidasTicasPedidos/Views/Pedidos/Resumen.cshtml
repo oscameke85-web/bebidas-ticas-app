@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BebidasTicasPedidos.ViewModels.ResumenProductoViewModel>
+
+@{
+    ViewData["Title"] = "Resumen de Productos";
+}
+
+<h1>Resumen de Productos</h1>
+
+<a asp-action="Index" class="btn btn-secondary mb-3">Volver</a>
+
+@foreach (var grupo in Model.GroupBy(item => item.Fecha.Date))
+{
+    var totalCantidad = grupo.Sum(item => item.CantidadTotal);
+    var totalDinero = grupo.Sum(item => item.TotalDinero);
+
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <strong>@grupo.Key.ToString("dd/MM/yyyy")</strong>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Total pedido</th>
+                        <th>Total dinero</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in grupo)
+                    {
+                        <tr>
+                            <td>@item.Producto</td>
+                            <td><strong>@item.CantidadTotal</strong></td>
+                            <td><strong>₡@item.TotalDinero.ToString("N2")</strong></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="text-end mt-3">
+                <h5>Total unidades: <strong>@totalCantidad</strong></h5>
+                <h5>Total dinero: <strong>₡@totalDinero.ToString("N2")</strong></h5>
+            </div>
+        </div>
+    </div>
+}

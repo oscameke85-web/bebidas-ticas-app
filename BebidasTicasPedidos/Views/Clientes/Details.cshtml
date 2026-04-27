@@ -1,0 +1,23 @@
+﻿@model BebidasTicasPedidos.Models.Cliente
+
+@{
+    ViewData["Title"] = "Detalle Cliente";
+}
+
+<h1>Detalle del Cliente</h1>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>Nombre:</strong> @Model.Nombre</p>
+        <p><strong>Teléfono:</strong> @Model.Telefono</p>
+        <p><strong>Correo:</strong> @Model.Correo</p>
+        <p><strong>Zona:</strong> @Model.Zona</p>
+        <p><strong>Tipo:</strong> @Model.TipoCliente</p>
+        <p><strong>Observaciones:</strong> @Model.Observaciones</p>
+    </div>
+</div>
+
+<br />
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver</a>

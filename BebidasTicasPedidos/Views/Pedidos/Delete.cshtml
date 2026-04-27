@@ -1,0 +1,28 @@
+﻿@model BebidasTicasPedidos.Models.Pedido
+
+@{
+    ViewData["Title"] = "Eliminar Pedido";
+}
+
+<h1>Eliminar Pedido</h1>
+
+<div class="alert alert-danger">
+    ¿Seguro que desea eliminar este pedido?
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>Cliente:</strong> @Model.Cliente?.Nombre</p>
+        <p><strong>Fecha:</strong> @Model.Fecha.ToString("dd/MM/yyyy HH:mm")</p>
+        <p><strong>Total:</strong> ₡@Model.Total</p>
+    </div>
+</div>
+
+<br />
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

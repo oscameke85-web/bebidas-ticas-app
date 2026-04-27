@@ -1,0 +1,42 @@
+﻿@model BebidasTicasPedidos.Models.Producto
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<h1>Editar Producto</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Categoria" class="form-label"></label>
+        <select asp-for="Categoria" class="form-control">
+            <option value="Jugo Natural">Jugo Natural</option>
+            <option value="Pulpa">Pulpa</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Presentacion" class="form-label"></label>
+        <input asp-for="Presentacion" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Precio" class="form-label"></label>
+        <input asp-for="Precio" class="form-control" type="number" step="0.01" />
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="Disponible" class="form-check-input" />
+        <label asp-for="Disponible" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Actualizar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
