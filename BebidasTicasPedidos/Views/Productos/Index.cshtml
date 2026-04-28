@@ -4,36 +4,83 @@
     ViewData["Title"] = "Productos";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1>Productos</h1>
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+    <h1 class="mb-3 mb-md-0">Productos</h1>
     <a asp-action="Create" class="btn btn-success">Agregar Producto</a>
 </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Presentación</th>
-            <th>Precio</th>
-            <th>Disponible</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var producto in Model)
-        {
-            <tr>
-                <td>@producto.Nombre</td>
-                <td>@producto.Categoria</td>
-                <td>@producto.Presentacion</td>
-                <td>₡@producto.Precio</td>
-                <td>@(producto.Disponible ? "Sí" : "No")</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@producto.Id" class="btn btn-warning btn-sm">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@producto.Id" class="btn btn-danger btn-sm">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<!-- 💻 TABLA (PC) -->
+<div class="d-none d-md-block">
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Presentación</th>
+                    <th>Precio</th>
+                    <th>Disponible</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var producto in Model)
+                {
+                    <tr>
+                        <td>@producto.Nombre</td>
+                        <td>@producto.Categoria</td>
+                        <td>@producto.Presentacion</td>
+                        <td>₡@producto.Precio.ToString("N2")</td>
+                        <td>
+                            @if (producto.Disponible)
+                            {
+                                <span class="badge bg-success">Sí</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">No</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@producto.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@producto.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 📱 TARJETAS (MÓVIL) -->
+<div class="d-md-none">
+    @foreach (var producto in Model)
+    {
+        <div class="producto-card">
+
+            <h4>@producto.Nombre</h4>
+
+            <p><strong>Categoría:</strong> @producto.Categoria</p>
+            <p><strong>Presentación:</strong> @producto.Presentacion</p>
+            <p><strong>Precio:</strong> ₡@producto.Precio.ToString("N2")</p>
+
+            <p>
+                <strong>Disponible:</strong>
+                @if (producto.Disponible)
+                {
+                    <span class="badge bg-success">Sí</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">No</span>
+                }
+            </p>
+
+            <div class="producto-actions">
+                <a asp-action="Edit" asp-route-id="@producto.Id" class="btn btn-warning btn-sm">Editar</a>
+                <a asp-action="Delete" asp-route-id="@producto.Id" class="btn btn-danger btn-sm">Eliminar</a>
+            </div>
+
+        </div>
+    }
+</div>

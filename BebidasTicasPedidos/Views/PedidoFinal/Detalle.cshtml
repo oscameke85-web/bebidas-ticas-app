@@ -1,0 +1,57 @@
+﻿@model BebidasTicasPedidos.Models.PedidoFinal
+
+@{
+    ViewData["Title"] = "Detalle Pedido Final";
+}
+
+<h1>Detalle Pedido Final</h1>
+
+<div class="card mb-4">
+    <div class="card-header bg-success text-white">
+        Información del pedido
+    </div>
+
+    <div class="card-body">
+        <p><strong>Fecha:</strong> @Model.Fecha.ToString("dd/MM/yyyy HH:mm")</p>
+        <p><strong>Total unidades:</strong> @Model.TotalUnidades</p>
+        <p><strong>Total general:</strong> ₡@Model.TotalDinero.ToString("N2")</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header bg-dark text-white">
+        Productos del pedido
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.Detalles)
+                    {
+                        <tr>
+                            <td>@item.Producto?.Nombre</td>
+                            <td>@item.Cantidad</td>
+                            <td>₡@item.PrecioUnitario.ToString("N2")</td>
+                            <td>₡@item.Subtotal.ToString("N2")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-end mt-3">
+            <a asp-action="Historial" class="btn btn-secondary">Volver</a>
+            <button onclick="window.print()" class="btn btn-success">Imprimir</button>
+        </div>
+    </div>
+</div>

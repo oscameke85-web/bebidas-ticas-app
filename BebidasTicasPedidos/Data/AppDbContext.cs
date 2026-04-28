@@ -16,5 +16,9 @@ namespace BebidasTicasPedidos.Data
         public DbSet<Pedido> Pedidos { get; set; }
 
         public DbSet<DetallePedido> DetallePedido { get; set; }
+
+        public DbSet<PedidoFinal> PedidosFinales { get; set; }
+
+        public DbSet<DetallePedidoFinal> DetallePedidosFinales { get; set; }
     }
 }

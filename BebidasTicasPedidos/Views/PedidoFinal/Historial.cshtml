@@ -1,0 +1,40 @@
+﻿@model List<BebidasTicasPedidos.Models.PedidoFinal>
+
+@{
+    ViewData["Title"] = "Historial de Pedidos Finales";
+}
+
+<h1>Historial de Pedidos Finales</h1>
+
+<a asp-action="Index" class="btn btn-success mb-3">Nuevo Pedido Final</a>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Fecha</th>
+                <th>Total unidades</th>
+                <th>Total dinero</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var pedido in Model)
+            {
+                <tr>
+                    <td>@pedido.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@pedido.TotalUnidades</td>
+                    <td>₡@pedido.TotalDinero.ToString("N2")</td>
+                    <td>
+                        <a asp-action="Detalle"
+                           asp-route-id="@pedido.Id"
+                           class="btn btn-primary btn-sm">
+                            Ver detalle
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,8 +1,18 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background: #f4f9f1;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+/* NAVBAR */
 .navbar {
     padding: 16px 0;
     background: #16884f !important;
@@ -11,6 +21,7 @@ body {
 .navbar-brand {
     font-size: 24px;
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .nav-link {
@@ -22,38 +33,59 @@ body {
     max-width: 1150px;
 }
 
-.hero-dashboard {
-    background: linear-gradient(135deg, #e8f8df, #ffffff);
+/* TITULOS */
+h1 {
+    font-weight: 900;
+    color: #092b18;
+    margin-bottom: 25px;
+}
+
+/* HERO */
+.hero-dashboard,
+.hero-modern {
+    position: relative;
+    background: linear-gradient(135deg, #e9f8df, #ffffff);
     border-radius: 24px;
     padding: 80px 35px;
     text-align: center;
     box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     margin-top: 35px;
+    overflow: hidden;
 }
 
+    .title,
     .hero-dashboard h1 {
         font-size: 52px;
         font-weight: 900;
-        color: #092b18;
+        color: #0b2b1b;
     }
 
+    .subtitle,
     .hero-dashboard p {
         font-size: 20px;
         color: #4b604f;
         margin-bottom: 30px;
     }
 
-.hero-buttons a {
+/* BOTONES */
+.hero-buttons a,
+.dashboard-buttons .btn {
     margin: 8px;
     border-radius: 12px;
     padding: 12px 24px;
     font-weight: 700;
+    transition: all 0.3s ease;
 }
 
-h1 {
-    font-weight: 900;
-    color: #092b18;
-    margin-bottom: 25px;
+    .dashboard-buttons .btn:hover {
+        transform: scale(1.05);
+    }
+
+/* TABLAS */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .table {
@@ -63,11 +95,13 @@ h1 {
     box-shadow: 0 6px 18px rgba(0,0,0,0.05);
 }
 
+/* BOTONES GENERALES */
 .btn {
     border-radius: 10px;
     font-weight: 600;
 }
 
+/* CARDS */
 .card {
     border: none;
     border-radius: 18px;
@@ -79,7 +113,217 @@ h1 {
     font-weight: 700;
 }
 
+/* FOOTER */
 footer {
     margin-top: 80px;
     background: #151d18 !important;
 }
+
+/* FRUTAS ANIMADAS */
+.fruits {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.fruit {
+    position: absolute;
+    font-size: 40px;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0.6;
+}
+
+    .fruit:nth-child(1) {
+        left: 10%;
+        top: 80%;
+        animation-delay: 0s;
+    }
+
+    .fruit:nth-child(2) {
+        left: 30%;
+        top: 90%;
+        animation-delay: 1s;
+    }
+
+    .fruit:nth-child(3) {
+        left: 50%;
+        top: 85%;
+        animation-delay: 2s;
+    }
+
+    .fruit:nth-child(4) {
+        left: 70%;
+        top: 95%;
+        animation-delay: 3s;
+    }
+
+    .fruit:nth-child(5) {
+        left: 85%;
+        top: 80%;
+        animation-delay: 4s;
+    }
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* ===== MÓVIL ===== */
+@media (max-width: 768px) {
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .navbar .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+        max-width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+    }
+
+    .navbar-collapse {
+        margin-top: 12px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .nav-link {
+        margin-left: 0;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .hero-dashboard,
+    .hero-modern {
+        padding: 45px 18px;
+        margin-top: 15px;
+        border-radius: 18px;
+    }
+
+        .title,
+        .hero-dashboard h1 {
+            font-size: 34px;
+        }
+
+        .subtitle,
+        .hero-dashboard p {
+            font-size: 16px;
+        }
+
+    .dashboard-buttons .btn,
+    .hero-buttons a {
+        display: block;
+        width: 100%;
+        margin: 8px 0 !important;
+    }
+
+    .table-responsive {
+        border-radius: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 8px;
+    }
+
+        .table-responsive::after {
+            content: "Desliza para ver más →";
+            display: block;
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+            padding-left: 5px;
+        }
+
+    .table {
+        min-width: 650px;
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    footer {
+        font-size: 14px;
+        padding: 16px 10px !important;
+    }
+
+    .fruit {
+        font-size: 28px;
+        opacity: 0.4;
+    }
+}
+
+/* OCULTAR MENSAJE EN PC */
+@media (min-width: 769px) {
+    .table-responsive::after {
+        display: none;
+    }
+}
+
+/* ===== TARJETAS ===== */
+
+.cliente-card,
+.producto-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-left: 6px solid #16884f;
+}
+
+    .cliente-card h4,
+    .producto-card h4 {
+        font-weight: 800;
+        color: #092b18;
+        margin-bottom: 12px;
+    }
+
+    .cliente-card p,
+    .producto-card p {
+        margin-bottom: 7px;
+        color: #333;
+    }
+
+.cliente-actions,
+.producto-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+    .cliente-actions .btn,
+    .producto-actions .btn {
+        flex: 1;
+    }

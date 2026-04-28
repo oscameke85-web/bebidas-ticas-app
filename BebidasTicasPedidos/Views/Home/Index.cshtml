@@ -2,12 +2,48 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="hero-dashboard">
-    <h1>Sistema de Pedidos</h1>
-    <p>Control de clientes, productos, pedidos y resumen diario de Bebidas Ticas.</p>
+<div class="hero-modern">
 
-    <div class="hero-buttons">
-        <a asp-controller="Pedidos" asp-action="Create" class="btn btn-success btn-lg">Nuevo Pedido</a>
-        <a asp-controller="Pedidos" asp-action="Resumen" class="btn btn-outline-success btn-lg">Ver Resumen</a>
+    <div class="fruits">
+        <span class="fruit">🍓</span>
+        <span class="fruit">🍍</span>
+        <span class="fruit">🥭</span>
+        <span class="fruit">🍉</span>
+        <span class="fruit">🍊</span>
+    </div>
+
+    <div class="hero-content text-center">
+        <h1 class="title">Sistema de Pedidos</h1>
+        <p class="subtitle">
+            Control de clientes, productos y pedidos de Bebidas Ticas.
+        </p>
+
+        <div class="dashboard-buttons mt-4">
+
+            <a asp-controller="Pedidos" asp-action="Create" class="btn btn-success btn-lg m-2">
+                🧾 Nuevo Pedido
+            </a>
+
+            <a asp-controller="PedidoFinal" asp-action="Index" class="btn btn-dark btn-lg m-2">
+                📦 Pedido Final
+            </a>
+
+            <a asp-controller="PedidoFinal" asp-action="Historial" class="btn btn-secondary btn-lg m-2">
+                📊 Historial
+            </a>
+
+            <a asp-controller="Clientes" asp-action="Index" class="btn btn-primary btn-lg m-2">
+                👥 Clientes
+            </a>
+
+            <a asp-controller="Productos" asp-action="Index" class="btn btn-warning btn-lg m-2">
+                🛒 Productos
+            </a>
+
+            <a asp-controller="Pedidos" asp-action="Resumen" class="btn btn-outline-success btn-lg m-2">
+                📈 Resumen
+            </a>
+
+        </div>
     </div>
 </div>
