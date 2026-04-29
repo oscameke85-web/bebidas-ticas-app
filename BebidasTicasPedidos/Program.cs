@@ -5,9 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-// Base de datos SQLite para que funcione en Render gratis
+// Base de datos permanente en Supabase PostgreSQL
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=bebidas.db"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
