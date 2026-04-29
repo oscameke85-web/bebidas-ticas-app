@@ -104,10 +104,13 @@ namespace BebidasTicasPedidos.Controllers
 
         public async Task<IActionResult> Resumen()
         {
-            var resumen = await _context.DetallePedido
+            var detalles = await _context.DetallePedido
                 .Include(d => d.Pedido)
                 .Include(d => d.Producto)
                 .Where(d => d.Pedido != null && d.Producto != null)
+                .ToListAsync(); // 🔥 CLAVE
+
+            var resumen = detalles
                 .GroupBy(d => new
                 {
                     Fecha = d.Pedido!.Fecha.Date,
@@ -118,11 +121,11 @@ namespace BebidasTicasPedidos.Controllers
                     Fecha = g.Key.Fecha,
                     Producto = g.Key.Producto,
                     CantidadTotal = g.Sum(x => x.Cantidad),
-                    TotalDinero = g.Sum(x => x.Subtotal)
+                    TotalDinero = g.Sum(x => (decimal)x.Subtotal) // 🔥 CLAVE
                 })
                 .OrderByDescending(r => r.Fecha)
                 .ThenBy(r => r.Producto)
-                .ToListAsync();
+                .ToList();
 
             return View(resumen);
         }
